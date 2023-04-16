@@ -233,7 +233,6 @@ class Skill(models.Model):
     meta_title = models.TextField(default="")
     meta_description = models.TextField(default="")
     page_content = models.TextField(default="")
-    meta = models.JSONField(null=True)
     skill_type = models.CharField(choices=SKILL_TYPE, max_length=20, default="it")
 
     def __str__(self):

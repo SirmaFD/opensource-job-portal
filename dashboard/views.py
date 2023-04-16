@@ -3741,7 +3741,7 @@ def applicants_mail(request):
         "%Y-%m-%d"
     )
 
-    all_mail_applicants = list(db.users.find({"date": current_date}))
+    all_mail_applicants = list(dashboard.users.find({"date": current_date}))
 
     items_per_page = 100
 
@@ -4790,5 +4790,5 @@ def moving_duplicates(request, value):
 
 @permission_required("activity_edit")
 def clear_cache(request):
-    cache._cache.flush_all()
+    cache._cache.clear()
     return HttpResponseRedirect("/dashboard/")

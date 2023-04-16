@@ -1,3 +1,4 @@
+from pathlib import Path
 import os
 
 from celery.schedules import crontab
@@ -6,7 +7,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 DEBUG = os.getenv("DEBUG", True)
 TEMPLATE_DEBUG = DEBUG
@@ -55,9 +57,9 @@ FB_SECRET = os.getenv("FACEBOOK_APP_SECRET")
 FB_PEELJOBS_PAGEID = os.getenv("FBPEELJOBSPAGEID")
 
 # google app
-GOOGLE_CLIENT_ID = GOOGLE_OAUTH2_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID")
-GOOGLE_CLIENT_SECRET = GOOGLE_OAUTH2_CLIENT_SECRET = os.getenv("GOOGLE_CLIENT_SECRET")
-GOOGLE_LOGIN_HOST = os.getenv("GOOGLE_LOGIN_HOST")
+GOOGLE_CLIENT_ID = GOOGLE_OAUTH2_CLIENT_ID = "702427260866-o9ut38h5v0m7s8kc9scb9ohtnshga694.apps.googleusercontent.com"
+GOOGLE_CLIENT_SECRET = GOOGLE_OAUTH2_CLIENT_SECRET = "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"
+GOOGLE_LOGIN_HOST = 'http://localhost:8000'
 
 # ln app
 LN_API_KEY = os.getenv("LNAPIKEY")
@@ -67,12 +69,12 @@ LN_OAUTH_USER_SECRET = os.getenv("LNOAUTHUSERSECRET")
 LN_COMPANYID = os.getenv("LNCOMPANYID")
 
 # re-captcha
-RECAPTCHA_PUBLIC_KEY = os.getenv("RECAPTCHAPUBLICKEY")
-RECAPTCHA_PRIVATE_KEY = os.getenv("RECAPTCHAPRIVATEKEY")
+RECAPTCHA_PUBLIC_KEY = '6LcPIHslAAAAAKRT6ZVAKH8Ew312MmprEd8Exttg'
+RECAPTCHA_PRIVATE_KEY = '6LcPIHslAAAAAOAj56LJv7eYuTZFc8LgXra_eSba'
 RECAPTCHA_USE_SSL = True
 
 # Make this unique, and don"t share it with anybody.
-SECRET_KEY = os.getenv("SECRET_KEY")
+SECRET_KEY = 'sdsbnmr3u9490ghfkjldfjgijfgjfgjkvmcvo;dsjfsa309rkei3'
 
 ADMINS = (
     # ("Your Name", "your_email@example.com"),
@@ -80,14 +82,15 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.getenv("DB_NAME"),
-        "USER": os.getenv("DB_USER"),
-        "PASSWORD": os.getenv("DB_PASSWORD"),
-        "HOST": os.getenv("DB_HOST"),
-        "PORT": os.getenv("DB_PORT"),
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'peeldb',
+        'USER': 'postgres',
+        'PASSWORD': 'pwn2own10',
+        'HOST': '172.20.16.1',
+        'PORT': '5433',
     }
 }
 
@@ -179,7 +182,7 @@ AUTHENTICATION_BACKENDS = (
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR + "/templates"],
+        "DIRS": [BASE_DIR / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -197,8 +200,8 @@ TEMPLATES = [
 AM_ACCESS_KEY = AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY")
 AM_PASS_KEY = AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_KEY")
 AWS_SES_REGION_NAME = os.getenv("AWS_SES_REGION_NAME")
-AWS_SES_REGION_ENDPOINT = os.getenv("AWS_SES_REGION_ENDPOINT")
-AWS_STORAGE_BUCKET_NAME = os.getenv("AWS_STORAGE_BUCKET_NAME")
+#AWS_SES_REGION_ENDPOINT = os.getenv("AWS_SES_REGION_ENDPOINT")
+#AWS_STORAGE_BUCKET_NAME = os.getenv("AWS_STORAGE_BUCKET_NAME")
 
 
 COMPRESS_CSS_FILTERS = [
@@ -379,15 +382,15 @@ THUMBNAIL_FORCE_OVERWRITE = True
 # AWS_ENABLED = os.getenv("AWSENABLED")
 # DISQUS_SHORTNAME = ""
 
-# CACHES = {
-#     "default": {
-#         "BACKEND": "django.core.cache.backends.memcached.MemcachedCache",
-#         "LOCATION": "127.0.0.1:11211",
-#         "TIMEOUT": 48 * 60 * 60,
-#         "OPTIONS": {"server_max_value_length": 1024 * 1024 * 2,},
-#     }
-# }
-
+""" CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.memcached.MemcachedCache",
+        "LOCATION": "127.0.0.1:11211",
+        "TIMEOUT": 48 * 60 * 60,
+        "OPTIONS": {"server_max_value_length": 1024 * 1024 * 2,},
+    }
+}
+ """
 # CACHES = {
 #     "default": {
 #         "BACKEND": "django.core.cache.backends.dummy.DummyCache",
@@ -513,3 +516,6 @@ EMAIL_BACKEND = "django_ses.SESBackend"
 
 MP_CELERY_MONITOR_KEY = os.getenv("MP_CELERY_MONITOR_KEY")
 CELERY_MONITOR_URL = os.getenv("CELERY_MONITOR_URL")
+
+
+
