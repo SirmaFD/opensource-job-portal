@@ -57,8 +57,8 @@ FB_SECRET = os.getenv("FACEBOOK_APP_SECRET")
 FB_PEELJOBS_PAGEID = os.getenv("FBPEELJOBSPAGEID")
 
 # google app
-GOOGLE_CLIENT_ID = GOOGLE_OAUTH2_CLIENT_ID = "702427260866-o9ut38h5v0m7s8kc9scb9ohtnshga694.apps.googleusercontent.com"
-GOOGLE_CLIENT_SECRET = GOOGLE_OAUTH2_CLIENT_SECRET = "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"
+GOOGLE_CLIENT_ID = GOOGLE_OAUTH2_CLIENT_ID = "GOOGLE_OAUTH2_CLIENT_ID"
+GOOGLE_CLIENT_SECRET = GOOGLE_OAUTH2_CLIENT_SECRET = "GOOGLE_OAUTH2_CLIENT_SECRET"
 GOOGLE_LOGIN_HOST = 'http://localhost:8000'
 
 # ln app
@@ -69,12 +69,12 @@ LN_OAUTH_USER_SECRET = os.getenv("LNOAUTHUSERSECRET")
 LN_COMPANYID = os.getenv("LNCOMPANYID")
 
 # re-captcha
-RECAPTCHA_PUBLIC_KEY = '6LcPIHslAAAAAKRT6ZVAKH8Ew312MmprEd8Exttg'
-RECAPTCHA_PRIVATE_KEY = '6LcPIHslAAAAAOAj56LJv7eYuTZFc8LgXra_eSba'
+RECAPTCHA_PUBLIC_KEY = 'RECAPTCHA_PUBLIC_KEY'
+RECAPTCHA_PRIVATE_KEY = 'RECAPTCHA_PRIVATE_KEY'
 RECAPTCHA_USE_SSL = True
 
 # Make this unique, and don"t share it with anybody.
-SECRET_KEY = 'sdsbnmr3u9490ghfkjldfjgijfgjfgjkvmcvo;dsjfsa309rkei3'
+SECRET_KEY = 'SECRET_KEY'
 
 ADMINS = (
     # ("Your Name", "your_email@example.com"),
@@ -88,9 +88,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'peeldb',
         'USER': 'postgres',
-        'PASSWORD': 'pwn2own10',
-        'HOST': '172.20.16.1',
-        'PORT': '5433',
+        'PASSWORD': 'PASSWORD',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
